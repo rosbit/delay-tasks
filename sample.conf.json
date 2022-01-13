@@ -1,0 +1,6 @@
+{
+	"listen-host": "",
+	"listen-port": 7080,
+	"cb-retry-times": 3,
+	"saving-home": "."
+}
