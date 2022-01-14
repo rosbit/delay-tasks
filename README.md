@@ -1,6 +1,6 @@
 # delay-tasks
 
-a delayed tasks implementation.
+An implementation of delayed tasks.
 
 ![diag-1](delay-tasks.jpg)
 
@@ -12,7 +12,7 @@ $ cd delay-tasks
 $ make
 ```
 
-  An executable will be generated. Run it like this
+  An executable `delay-tasks` will be generated. Run it like the following:
 
 ```bash
 $ CONF_FILE=./sample.conf.json ./delay-tasks
@@ -39,10 +39,18 @@ $ CONF_FILE=./sample.conf.json ./delay-tasks
   }
   ```
 
-- An handler must be implemented as
+- A handler must be implemented as an endpoint satisfy the following:
   
   - method: POST
-  - BODY: a JSON of delayed task `params`, see params detail in Create/Update task.
+  - BODY: a JSON, see params detail in Create/Update task.
+    ```json
+    {
+       "cate": "task category",
+       "key": uint64,  // task key in the category
+       "params": JSON, // params when adding task
+       "inAdvance": false|true // whether the task is run in advance.
+    }
+    ```
 
 ### 2. Create/Update a delayed task in a category
 
@@ -68,7 +76,7 @@ $ CONF_FILE=./sample.conf.json ./delay-tasks
   }
   ```
 
-### 3. Remove a delayted task in a category
+### 3. Remove a delayed task in a category
 
 - DELETE /task/:cate
 
